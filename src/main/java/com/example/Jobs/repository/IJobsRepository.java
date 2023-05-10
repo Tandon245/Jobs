@@ -5,6 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface IJobsRepository extends JpaRepository<Jobs,Integer> {
+public interface IJobsRepository extends JpaRepository<Jobs,Long> {
 
 }
