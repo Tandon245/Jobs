@@ -1,5 +1,6 @@
 package com.example.Jobs.controller;
 
+import com.example.Jobs.model.JobType;
 import com.example.Jobs.model.Jobs;
 import com.example.Jobs.service.JobsService;
 import jakarta.validation.Valid;
@@ -45,5 +46,12 @@ public class JobsController {
         }
         return new ResponseEntity<>("No such job exist in the database with id " + id, HttpStatus.BAD_REQUEST);
     }
+
+    @GetMapping("/getJobByJobType/{jobType}")
+    public List<Jobs> getJobByJobType(@PathVariable String jobType) {
+        JobType type = JobType.valueOf(jobType.toUpperCase());
+        return service.getJobByJobType(type);
+    }
+
 
 }
