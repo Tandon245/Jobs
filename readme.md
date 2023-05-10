@@ -1,5 +1,5 @@
 
-Jobs Application
+# Jobs Application
 This is a simple Spring Boot application that allows users to manage job postings. It is written in Java and uses the Spring framework.
 
 Features
