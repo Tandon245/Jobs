@@ -59,3 +59,23 @@ The application uses the following data model:
 
 The project follows a standard Spring Boot application structure. Here's an overview of the main directories and files:
 
+
+
+- `src/main/java/com/example/Jobs`: Contains the Java source code for the application.
+  - `JobsApplication.java`: The main entry point of the Spring Boot application.
+  - `controller/JobsController.java`: Implements the REST endpoints for job posting management.
+  - `model/Jobs.java`: Defines the `Jobs` entity class representing a job posting.
+  - `repository/JobsRepository.java`: Provides the interface for interacting with the database.
+  - `service/JobsService.java`: Implements the business logic for job posting management.
+- `src/main/resources`: Contains the application configuration and database scripts.
+  - `application.properties`: Configures the application properties, such as database connection details.
+  - `data.sql`: Contains sample data to be inserted into the database.
+  - `schema.sql`: Defines the database schema.
+- `src/test/java`: Contains the unit tests for the application.
+- `pom.xml`: The project's Maven configuration file that manages dependencies and build settings.
+- `README.md`: Documentation file providing an overview of the Jobs application.
+
+## Contributing
+
+Contributions to the Jobs application are welcome. If you find a bug or want to suggest an improvement, please create an issue or submit a pull request.
+
