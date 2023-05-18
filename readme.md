@@ -1,33 +1,100 @@
 
 # Jobs Application
-This is a simple Spring Boot application that allows users to manage job postings. It is written in Java and uses the Spring framework.
+This is a Spring Boot application that allows users to manage job postings. Users can add new job postings, view a list of all job postings, view a specific job posting by ID, delete a job posting by ID, and get a list of all job postings by job type. The application uses a MySQL database to store job postings and provides RESTful APIs for performing these operations.
 
-Features
-The Jobs application allows users to perform the following operations:
+## Getting Started
+To run the Jobs application locally, follow these steps:
 
-Add a new job posting
-View a list of all job postings
-View a specific job posting by ID
-Delete a job posting by ID
-Get a list of all job postings by job type
-Data Structure
-The Jobs application uses a relational database to store job postings. The database schema includes the following tables:
-
-jobs: contains information about job postings, including job title, company name, job type, and job description.
-Endpoints
+Clone the repository to your local machine.
+Make sure you have Java and Maven installed.
+Set up a MySQL database and update the application.properties file with the appropriate database connection details.
+Run the application using your preferred IDE or by executing the command mvn spring-boot:run in the project's root directory.
+The application will be accessible at http://localhost:8080.
+## Endpoints
 The following endpoints are available:
 
-POST /jobs/addJob: Add a new job posting
-GET /jobs/getAllJobs: Get a list of all job postings
-GET /jobs/getJobById/{id}: Get a specific job posting by ID
-DELETE /jobs/deleteJobById/{id}: Delete a job posting by ID
-GET /jobs/getJobByJobType/{jobType}: Get a list of all job postings by job type
-Technology Stack
-The Jobs application uses the following technologies:
+Add a new job posting
 
-Java
-Spring Boot
-JPA/Hibernate
-MySQL
-Project Summary
-The Jobs application is a simple example of a Spring Boot application that uses JPA/Hibernate to interact with a MySQL database. It provides basic functionality for managing job postings, including adding, viewing, and deleting job postings, as well as searching for job postings by job type.
+POST /jobs/addJob
+Request body: JSON representation of the job posting
+Response: HTTP status code 201 (Created) with the ID of the newly created job posting
+Get a list of all job postings
+
+GET /jobs/getAllJobs
+Response: List of all job postings in JSON format
+Get a specific job posting by ID
+
+GET /jobs/getJobById/{id}
+Path parameter: id - ID of the job posting
+Response: HTTP status code 200 (OK) with the job posting details in JSON format if the job posting exists, or HTTP status code 400 (Bad Request) if the job posting doesn't exist
+Delete a job posting by ID
+
+DELETE /jobs/deleteJobById/{id}
+Path parameter: id - ID of the job posting
+Response: HTTP status code 204 (No Content) if the job posting is successfully deleted, or HTTP status code 400 (Bad Request) if the job posting doesn't exist
+Get a list of all job postings by job type
+
+GET /jobs/getJobByJobType/{jobType}
+Path parameter: jobType - Job type (FULL_TIME, PART_TIME, CONTRACT)
+Response: List of job postings with the specified job type in JSON format
+Data Model
+The application uses the following data model:
+
+Jobs
+id (Long): Unique identifier of the job posting
+title (String): Title of the job posting
+description (String): Description of the job posting
+location (String): Location of the job posting
+salary (Double): Salary offered for the job posting
+companyName (String): Name of the company
+employerName (String): Name of the employer
+jobType (Enum: FULL_TIME, PART_TIME, CONTRACT): Type of the job
+appliedDate (LocalDate): Date when the job posting was applied
+## Project Structure
+The project follows a standard Spring Boot application structure. Here's an overview of the main directories and files:
+
+
+├── src
+│   ├── main
+│   │   ├── java
+│   │   │   └── com
+│   │   │       └── example
+│   │   │           ├── JobsApplication.java
+│   │   │           ├── controller
+│   │   │           │   └── JobsController.java
+│   │   │           ├── model
+│   │   │           │   └── Jobs.java
+│   │   │           ├── repository
+│   │   │           │   └── JobsRepository.java
+│   │   │           └── service
+│   │   │               └── JobsService.java
+│   │   └── resources
+│   │       ├── application.properties
+│   │       ├── data.sql
+│   │       └── schema.sql
+│   └── test
+│       └── java
+│           └── com
+│               └── example
+│                   └── controller
+│                       └── JobsControllerTests.java
+├── .gitignore
+├── mvnw
+├── mvnw.cmd
+├── pom.xml
+└── README.md
+src/main/java/com/example/Jobs: Contains the Java source code for the application.
+JobsApplication.java: The main entry point of the Spring Boot application.
+controller/JobsController.java: Implements the REST endpoints for job posting management.
+model/Jobs.java: Defines the Jobs entity class representing a job posting.
+repository/JobsRepository.java: Provides the interface for interacting with the database.
+service/JobsService.java: Implements the business logic for job posting management.
+src/main/resources: Contains the application configuration and database scripts.
+application.properties: Configures the application properties, such as database connection details.
+data.sql: Contains sample data to be inserted into the database.
+schema.sql: Defines the database schema.
+src/test/java: Contains the unit tests for the application.
+pom.xml: The project's Maven configuration file that manages dependencies and build settings.
+README.md: Documentation file providing an overview of the Jobs application.
+# Contributing
+Contributions to the Jobs application are welcome. If you find a bug or want to suggest an improvement, please create an issue or submit a pull request.
