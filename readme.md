@@ -53,7 +53,6 @@ appliedDate (LocalDate): Date when the job posting was applied
 ## Project Structure
 The project follows a standard Spring Boot application structure. Here's an overview of the main directories and files:
 
-
 ├── src
 │   ├── main
 │   │   ├── java
@@ -83,6 +82,7 @@ The project follows a standard Spring Boot application structure. Here's an over
 ├── mvnw.cmd
 ├── pom.xml
 └── README.md
+
 src/main/java/com/example/Jobs: Contains the Java source code for the application.
 JobsApplication.java: The main entry point of the Spring Boot application.
 controller/JobsController.java: Implements the REST endpoints for job posting management.
